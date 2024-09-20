@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
 
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
 <html
   lang="en"
   class="light-style customizer-hide"
@@ -34,7 +23,8 @@
    @include('front.partial.authLogo')
               <h4 class="mb-2">Forgot Password? 🔒</h4>
               <p class="mb-4">Enter your email and we'll send you instructions to reset your password</p>
-              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+              <form id="formAuthentication" class="mb-3" action="{{ route('password.email') }}" method="POST">
+               @csrf
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
                   <input
@@ -45,11 +35,12 @@
                     placeholder="Enter your email"
                     autofocus
                   />
+                  <x-input-label for="email" :value="__('Email')" />
                 </div>
                 <button class="btn btn-primary d-grid w-100">Send Reset Link</button>
               </form>
               <div class="text-center">
-                <a href="auth-login-basic.html" class="d-flex align-items-center justify-content-center">
+                <a href="{{ route('login') }}" class="d-flex align-items-center justify-content-center">
                   <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
                   Back to login
                 </a>

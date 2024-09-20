@@ -16,29 +16,31 @@
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
-          <!-- Register -->
+          <!-- login -->
           <div class="card">
             <div class="card-body">
                 @include('front.partial.authLogo')
               <h4 class="mb-2">Welcome to Sneat! 👋</h4>
               <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+              <form id="formAuthentication" class="mb-3" action="{{ route('login') }}" method="POST">
+                @csrf
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email or Username</label>
+                  <label for="email" class="form-label">Email</label>
                   <input
                     type="text"
                     class="form-control"
                     id="email"
-                    name="email-username"
-                    placeholder="Enter your email or username"
-                    autofocus
+                    name="email"
+                    placeholder="Enter your email"
+                    autofocus :value="old('email')"
                   />
+                  <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Password</label>
-                    <a href="auth-forgot-password-basic.html">
+                    <a href="{{ route('password.request') }}">
                       <small>Forgot Password?</small>
                     </a>
                   </div>
@@ -50,8 +52,11 @@
                       name="password"
                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                       aria-describedby="password"
+                      :value="old('password')"
                     />
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+
                   </div>
                 </div>
                 <div class="mb-3">
@@ -65,12 +70,17 @@
                 </div>
               </form>
 
-              <p class="text-center">
+              {{-- <p class="text-center">
                 <span>New on our platform?</span>
                 <a href="auth-register-basic.html">
                   <span>Create an account</span>
                 </a>
-              </p>
+              </p> --}}
+              <form action="{{ route('logout') }}" method="post" id="logout_form">
+                @csrf
+                <a class="nav-link"
+                    href="javascript:$('form#logout_form').submit();">Logout</a>
+            </form>
             </div>
           </div>
           <!-- /Register -->

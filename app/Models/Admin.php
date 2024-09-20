@@ -15,10 +15,6 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notify(new resetPasswordNotification($token));
-    }
     protected $fillable = [
         'name',
         'email',

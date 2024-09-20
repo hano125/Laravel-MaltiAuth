@@ -21,14 +21,14 @@
                             <div class="mb-3">
                                 <label for="username" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="username" name="name"
-                                    placeholder="Enter your name" autofocus />
+                                    placeholder="Enter your name" autofocus :value="old('name')" />
                                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
 
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="text" class="form-control" id="email" name="email"
-                                    placeholder="Enter your email" />
+                                    placeholder="Enter your email" :value="old('email')" />
                                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>
                             <div class="mb-3 form-password-toggle">
@@ -36,7 +36,7 @@
                                 <div class="input-group input-group-merge">
                                     <input type="password" id="password" class="form-control" name="password"
                                         placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                        aria-describedby="password" />
+                                        aria-describedby="password" / :value="old('password')">
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
