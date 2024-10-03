@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\adminController;
+use App\Http\Controllers\Back\backController;
 use App\Http\Controllers\frontController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +21,15 @@ use Illuminate\Support\Facades\Route;
 //FRONT DESGIN
 Route::prefix("front")->name('front.')->middleware('auth')->group(function(){
     Route::get("/",frontController::class)->name('index');
+    Route::get("/register",function(){
+        return view('back.register');
+    });
+    Route::get("/login",function(){
+        return view('back.login');
+    });
 });
 require __DIR__.'/auth.php';
+//ADMIN DESGIN
 
 
 
